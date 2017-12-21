@@ -1,12 +1,13 @@
-from django.urls import path
+from django.conf.urls import url
+
 from . import views
 
 app_name = "music"
 
 urlpatterns = [
-    path('/', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 
-    path('/<album_id>/', views.detail, name='detail'),
+    url(r'^(?P<album_id>[0-9]+)$', views.DetailView.as_view(), name='detail'),
 
-    path('/<album_id>/favorite/', views.favorite, name='favorite')
+    #path('/<album_id>/favorite/', views.favorite, name='favorite')
 ]

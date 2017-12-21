@@ -1,6 +1,14 @@
+{% extends 'music/base.html' %}
+{% block title %}Albums{% endblock %}
+{% block body %}
+{% if all_albums %}
 <ul>
     <h1>Here are all Albums</h1>
     {% for album in all_albums %}
     <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
     {% endfor %}
 </ul>
+{% else %}
+    <h3>You don't have any albums</h3>
+{% endif %}
+{% endblock %}
